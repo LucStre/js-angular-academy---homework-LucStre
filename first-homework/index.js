@@ -31,8 +31,9 @@ function renderReviews(reviews){
 
         reviewRating.innerText = review.rating;
         reviewText.innerText = review.text;
-        listElement.appendChild(reviewRating);
+        reviewRating.insertAdjacentText('beforeend', '/5');
         listElement.appendChild(reviewText);
+        listElement.appendChild(reviewRating);
         reviewListElement.appendChild(listElement);
     });
 }
