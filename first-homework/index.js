@@ -29,13 +29,24 @@ function renderReviews(reviews) {
 		const listElement = document.createElement('li');
 		const reviewRating = document.createElement('span');
 		const reviewText = document.createElement('span');
+		const removeButton = document.createElement('button');
 
+		removeButton.innerText = 'Remove';
 		reviewRating.innerText = review.rating;
 		reviewText.innerText = review.text;
 
 		reviewRating.insertAdjacentText('beforeend', '/5');
 		listElement.appendChild(reviewText);
 		listElement.appendChild(reviewRating);
+		listElement.appendChild(removeButton);
+
+		removeButton.addEventListener('click', () => {
+			const reviewIndex = reviews.findIndex((el) => el === review);
+			reviews.splice(reviewIndex, 1);
+
+			renderReviews(reviews);
+		});
+
 		reviewListElement.appendChild(listElement);
 	});
 	saveReviews(reviews);
