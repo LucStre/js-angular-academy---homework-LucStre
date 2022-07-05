@@ -1,11 +1,13 @@
 const reviewFormElement = document.getElementById('review-form');
 const reviewListElement = document.getElementById('review-list');
+const averageElement = document.getElementById('average');
 
 const reviewKey = 'reviews';
 
 const reviews = JSON.parse(localStorage.getItem(reviewKey));
 
 renderReviews(reviews);
+renderAverage();
 
 reviewFormElement.addEventListener('submit', (event) => {
 	event.preventDefault();
@@ -19,9 +21,15 @@ reviewFormElement.addEventListener('submit', (event) => {
 	});
 
 	renderReviews(reviews);
+	renderAverage();
 
 	reviewFormElement.reset();
 });
+
+function renderAverage() {
+	averageElement.innerText = getAverageReview();
+	averageElement.insertAdjacentText('beforeend', ' / 5');
+}
 
 function renderReviews(reviews) {
 	clearReviews();
@@ -45,11 +53,18 @@ function renderReviews(reviews) {
 			reviews.splice(reviewIndex, 1);
 
 			renderReviews(reviews);
+			renderAverage();
 		});
 
 		reviewListElement.appendChild(listElement);
 	});
 	saveReviews(reviews);
+}
+
+function getAverageReview() {
+	var sum = 0;
+	reviews.forEach((review) => (sum += parseInt(review.rating)));
+	return Number((sum / reviews.length).toFixed(2));
 }
 
 function saveReviews(reviews) {
