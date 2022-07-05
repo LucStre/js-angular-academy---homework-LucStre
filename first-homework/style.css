@@ -28,12 +28,13 @@ textarea {
     border: none;
 }
 
-input[type="text"] {
+input {
     border-radius: 10px;
     border: none;
     display: flex;
     margin: 12px 0px 12px 0px;
     padding: 12px 12px;
+    width: 10%;
 }
 
 button {
@@ -52,6 +53,7 @@ li {
     background-color: #F0E68C;
     border-radius: 10px;
     margin-top: 10px;
+    padding: 10px;
 }
 
 li span {
