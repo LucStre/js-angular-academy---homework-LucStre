@@ -20,6 +20,8 @@ reviewFormElement.addEventListener('submit', (event) => {
     });
 
     renderReviews(reviews);
+
+    reviewFormElement.reset();
 });
 
 function renderReviews(reviews){
@@ -31,6 +33,7 @@ function renderReviews(reviews){
 
         reviewRating.innerText = review.rating;
         reviewText.innerText = review.text;
+
         reviewRating.insertAdjacentText('beforeend', '/5');
         listElement.appendChild(reviewText);
         listElement.appendChild(reviewRating);
