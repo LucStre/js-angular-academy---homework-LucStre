@@ -1,12 +1,9 @@
 const reviewFormElement = document.getElementById('review-form');
 const reviewListElement = document.getElementById('review-list');
 
-const reviews = [
-	{
-		text: 'Great movie!',
-		rating: 5,
-	},
-];
+const reviewKey = 'reviews';
+
+const reviews = JSON.parse(localStorage.getItem(reviewKey));
 
 renderReviews(reviews);
 
@@ -41,6 +38,11 @@ function renderReviews(reviews) {
 		listElement.appendChild(reviewRating);
 		reviewListElement.appendChild(listElement);
 	});
+	saveReviews(reviews);
+}
+
+function saveReviews(reviews) {
+	localStorage.setItem(reviewKey, JSON.stringify(reviews));
 }
 
 function clearReviews() {
