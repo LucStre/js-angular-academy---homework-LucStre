@@ -1,7 +1,9 @@
 const reviewFormElement = document.getElementById('review-form');
 const reviewListElement = document.getElementById('review-list');
 const averageElement = document.getElementById('average');
+const starsButtons = document.querySelectorAll('input');
 
+var reviewRating = 0;
 const reviewKey = 'reviews';
 
 const reviews = JSON.parse(localStorage.getItem(reviewKey));
@@ -9,11 +11,21 @@ const reviews = JSON.parse(localStorage.getItem(reviewKey));
 renderReviews(reviews);
 renderAverage();
 
+starsButtons.forEach((button) => {
+	button.addEventListener('change', () => {
+		reviewRating = button.value;
+		starsButtons.forEach((btn) => {
+			if (btn.value < button.value) {
+				btn.checked = button.checked;
+			}
+		});
+	});
+});
+
 reviewFormElement.addEventListener('submit', (event) => {
 	event.preventDefault();
 	const formData = new FormData(reviewFormElement);
 	const reviewText = formData.get('text');
-	const reviewRating = formData.get('rating');
 
 	reviews.push({
 		text: reviewText,
