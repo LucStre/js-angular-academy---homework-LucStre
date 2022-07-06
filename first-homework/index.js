@@ -58,6 +58,24 @@ function renderReviews(reviews) {
 		reviewRating.insertAdjacentText('beforeend', '/5');
 		listElement.appendChild(reviewText);
 		listElement.appendChild(reviewRating);
+
+		const stars = document.createElement('div');
+		stars.style.display = '-webkit-box';
+		for (i = 1; i <= 5; i++) {
+			const star = document.createElement('span');
+			star.style.fontSize = '20px';
+			star.style.paddingRight = '13px';
+			if (review.rating >= i) {
+				star.style.color = '#FFC107';
+				star.innerHTML += '&bigstar;';
+			} else {
+				star.style.color = '#FFFF';
+				star.innerHTML += '&bigstar;';
+			}
+			stars.appendChild(star);
+		}
+		listElement.appendChild(stars);
+
 		listElement.appendChild(removeButton);
 
 		removeButton.addEventListener('click', () => {
