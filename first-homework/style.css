@@ -1,4 +1,4 @@
-h1{
+h1, h3{
     color: #FFFF;
 }
 
@@ -16,6 +16,13 @@ figure {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: oblique;
     margin: 0;
+}
+
+#average {
+    color: #DAA520;
+    display: block;
+    font-weight: bold;
+    font-size: large;
 }
 
 img {
@@ -60,4 +67,29 @@ li span {
     flex: 1;
     display: block;
     padding: 5px;
+}
+
+.star-container {
+    display: flex;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+label{
+    font-size: 35px;
+    padding: 3px;
+}
+
+label span {
+    color: #DCDCDC;
+}
+
+input[type="checkbox"]:checked+label span {
+    color: #FFC107;
+}
+
+label span:hover {
+    color: #FFC107;
 }
