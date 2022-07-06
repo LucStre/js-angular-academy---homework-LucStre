@@ -15,8 +15,13 @@ starsButtons.forEach((button) => {
 	button.addEventListener('change', () => {
 		reviewRating = button.value;
 		starsButtons.forEach((btn) => {
-			if (btn.value < button.value) {
+			if (button.value != 5 && starsButtons[button.value].checked) {
+				button.checked = true;
+			}
+			if (btn.value <= button.value) {
 				btn.checked = button.checked;
+			} else {
+				btn.checked = !button.checked;
 			}
 		});
 	});
