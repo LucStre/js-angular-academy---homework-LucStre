@@ -3,7 +3,7 @@ const reviewListElement = document.getElementById('review-list');
 const averageElement = document.getElementById('average');
 const starsButtons = document.querySelectorAll('input');
 
-var reviewRating = 0;
+let reviewRating = 0;
 const reviewKey = 'reviews';
 
 const reviews = JSON.parse(localStorage.getItem(reviewKey));
@@ -15,13 +15,10 @@ starsButtons.forEach((button) => {
 	button.addEventListener('change', () => {
 		reviewRating = button.value;
 		starsButtons.forEach((btn) => {
-			if (button.value != 5 && starsButtons[button.value].checked) {
-				button.checked = true;
-			}
 			if (btn.value <= button.value) {
-				btn.checked = button.checked;
+				btn.checked = true;
 			} else {
-				btn.checked = !button.checked;
+				btn.checked = false;
 			}
 		});
 	});
@@ -97,8 +94,11 @@ function renderReviews(reviews) {
 }
 
 function getAverageReview() {
-	var sum = 0;
-	reviews.forEach((review) => (sum += parseInt(review.rating)));
+	let sum = 0;
+	reviews.forEach((review) => (sum += review.rating));
+	// const sum2 = reviews.reduce((current, review) => {
+	// 	return current + review.rating;
+	// }, 0);
 	return Number((sum / reviews.length).toFixed(2));
 }
 
