@@ -30,8 +30,21 @@
     <h1>Reviews</h1>
     <form id="review-form">
         <textarea name="text" placeholder="Add review" rows="5" cols="33"></textarea>
-        <input type="number" name="rating" min="0" max="5" placeholder="Add rating">
+        <div class="star-container">
+            <h3>Rating</h3>
+            <input type="checkbox" id="one-star" name="star-check" value="1"><label for="one-star"><span
+                    class="star">&bigstar;</span></label>
+            <input type="checkbox" id="two-star" name="star-check" value="2"><label for="two-star"><span
+                    class="star">&bigstar;</span></label>
+            <input type="checkbox" id="three-star" name="star-check" value="3"><label for="three-star"><span
+                    class="star">&bigstar;</span></label>
+            <input type="checkbox" id="four-star" name="star-check" value="4"><label for="four-star"><span
+                    class="star">&bigstar;</span></label>
+            <input type="checkbox" id="five-star" name="star-check" value="5"><label for="five-star"><span
+                    class="star">&bigstar;</span></label>
+        </div>
         <button type="submit">Post</button>
+
     </form>
 
     <ul id="review-list"></ul>

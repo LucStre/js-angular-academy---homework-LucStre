@@ -1,7 +1,9 @@
 const reviewFormElement = document.getElementById('review-form');
 const reviewListElement = document.getElementById('review-list');
 const averageElement = document.getElementById('average');
+const starsButtons = document.querySelectorAll('input');
 
+var reviewRating = 0;
 const reviewKey = 'reviews';
 
 const reviews = JSON.parse(localStorage.getItem(reviewKey));
@@ -9,11 +11,26 @@ const reviews = JSON.parse(localStorage.getItem(reviewKey));
 renderReviews(reviews);
 renderAverage();
 
+starsButtons.forEach((button) => {
+	button.addEventListener('change', () => {
+		reviewRating = button.value;
+		starsButtons.forEach((btn) => {
+			if (button.value != 5 && starsButtons[button.value].checked) {
+				button.checked = true;
+			}
+			if (btn.value <= button.value) {
+				btn.checked = button.checked;
+			} else {
+				btn.checked = !button.checked;
+			}
+		});
+	});
+});
+
 reviewFormElement.addEventListener('submit', (event) => {
 	event.preventDefault();
 	const formData = new FormData(reviewFormElement);
 	const reviewText = formData.get('text');
-	const reviewRating = formData.get('rating');
 
 	reviews.push({
 		text: reviewText,
@@ -46,6 +63,24 @@ function renderReviews(reviews) {
 		reviewRating.insertAdjacentText('beforeend', '/5');
 		listElement.appendChild(reviewText);
 		listElement.appendChild(reviewRating);
+
+		const stars = document.createElement('div');
+		stars.style.display = '-webkit-box';
+		for (i = 1; i <= 5; i++) {
+			const star = document.createElement('span');
+			star.style.fontSize = '20px';
+			star.style.paddingRight = '13px';
+			if (review.rating >= i) {
+				star.style.color = '#FFC107';
+				star.innerHTML += '&bigstar;';
+			} else {
+				star.style.color = '#FFFF';
+				star.innerHTML += '&bigstar;';
+			}
+			stars.appendChild(star);
+		}
+		listElement.appendChild(stars);
+
 		listElement.appendChild(removeButton);
 
 		removeButton.addEventListener('click', () => {

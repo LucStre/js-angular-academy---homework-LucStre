@@ -1,4 +1,4 @@
-h1{
+h1, h3{
     color: #FFFF;
 }
 
@@ -67,4 +67,29 @@ li span {
     flex: 1;
     display: block;
     padding: 5px;
+}
+
+.star-container {
+    display: flex;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+label{
+    font-size: 35px;
+    padding: 3px;
+}
+
+label span {
+    color: #DCDCDC;
+}
+
+input[type="checkbox"]:checked+label span {
+    color: #FFC107;
+}
+
+label span:hover {
+    color: #FFC107;
 }
