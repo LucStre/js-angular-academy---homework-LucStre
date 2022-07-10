@@ -1,6 +1,6 @@
 import { IShow } from './show.interface';
 
-class Show {
+export class Show {
 	public title: string;
 	public description: string;
 	public average_rating: number | null;

@@ -1,0 +1,12 @@
+.container {
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.show-card {
+    border-radius: 24px;
+    height: 400px;
+    width: min-content;
+    margin: 10px;
+    background-color: #F0F8FF;
+}

@@ -1,0 +1,14 @@
+<mat-card-header>
+	<div mat-card-avatar class="show-header-image"></div>
+	<mat-card-title>{{ show.title }}</mat-card-title>
+	<mat-card-subtitle>{{ show.average_rating === null ? 'no ratings' : show.average_rating }} </mat-card-subtitle>
+</mat-card-header>
+<img
+	mat-card-image
+	id="image"
+	[src]="show.image_url"
+	onerror="this.src='https://www.poduzetnicki-inkubator-dnz.hr/images/image.php/no-image.png?width=600&height=400&cropratio=3:2&image=https://www.poduzetnicki-inkubator-dnz.hr/images/no-image.png'"
+/>
+<mat-card-content id="description">
+	<p>{{ show.description }}</p>
+</mat-card-content>
