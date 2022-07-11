@@ -10,7 +10,7 @@ export class ShowCardComponent {
 	@Input() public show: Show = {
 		title: '',
 		description: '',
-		average_rating: null,
-		image_url: null,
+		averageRating: null,
+		imageUrl: null,
 	};
 }
