@@ -1,0 +1,19 @@
+<mat-card class="show-form">
+	<h2>Add new show</h2>
+	<mat-form-field class="show-full-width" appearance="fill">
+		<mat-label>Title</mat-label>
+		<input matInput #showTitleInput />
+	</mat-form-field>
+	<mat-form-field class="show-full-width" appearance="fill">
+		<mat-label>Description</mat-label>
+		<textarea matInput placeholder="Add description" #showDescriptionText></textarea>
+	</mat-form-field>
+	<button
+		mat-raised-button
+		color="primary"
+		(click)="onAddButtonClick(showTitleInput.value, showDescriptionText.value)"
+	>
+		Add
+	</button>
+</mat-card>
+<hr class="rounded" />
