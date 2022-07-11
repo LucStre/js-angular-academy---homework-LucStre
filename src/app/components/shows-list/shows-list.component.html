@@ -1,6 +1,7 @@
 <h2>Shows</h2>
 <ul class="container">
 	<mat-card class="show-card" *ngFor="let show of shows">
-		<app-show-card [show]="show"></app-show-card>
+		<app-show-card [title]="show.title" [averageRating]="show.averageRating" [imageUrl]="show.imageUrl">
+		</app-show-card>
 	</mat-card>
 </ul>

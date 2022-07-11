@@ -7,10 +7,7 @@ import { Show } from 'src/app/services/show/show.model';
 	styleUrls: ['./show-card.component.scss'],
 })
 export class ShowCardComponent {
-	@Input() public show: Show = {
-		title: '',
-		description: '',
-		averageRating: null,
-		imageUrl: null,
-	};
+	@Input() public title: string = '';
+	@Input() public averageRating: number | null = null;
+	@Input() public imageUrl: string | null = null;
 }

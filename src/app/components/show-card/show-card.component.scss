@@ -4,11 +4,11 @@
     overflow: hidden;
 }
 
-#description {
-    height: 80px;
-    overflow: auto;
-}
-
 .show-rating {
     display: flex;
+}
+
+.show-card {
+    display: block;
+    padding: 0px 16px;
 }
