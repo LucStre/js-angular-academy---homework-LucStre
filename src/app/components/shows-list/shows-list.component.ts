@@ -8,11 +8,4 @@ import { Show } from 'src/app/services/show/show.model';
 })
 export class ShowsListComponent {
 	@Input() public shows: Array<Show> = [];
-	// eslint-disable-next-line @angular-eslint/no-output-native
-	@Output() public show: Show = {
-		title: '',
-		description: '',
-		average_rating: null,
-		image_url: null,
-	};
 }

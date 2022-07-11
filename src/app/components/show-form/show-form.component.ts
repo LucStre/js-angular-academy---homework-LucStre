@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { IShow } from 'src/app/services/show/show.interface';
 import { Show } from 'src/app/services/show/show.model';
 
 @Component({
@@ -10,12 +11,12 @@ export class ShowFormComponent {
 	@Output() addShow = new EventEmitter<Show>();
 
 	public onAddButtonClick(showTitle: string, showDescription: string) {
-		const newShow: Show = {
+		const newShow: Show = new Show({
 			title: showTitle,
 			description: showDescription,
 			average_rating: null,
 			image_url: null,
-		};
+		});
 		this.addShow.emit(newShow);
 	}
 }

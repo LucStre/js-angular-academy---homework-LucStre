@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IShow } from 'src/app/services/show/show.interface';
 import { Show } from 'src/app/services/show/show.model';
 
 @Component({
@@ -44,7 +45,9 @@ export class ShowsContainerComponent {
 			average_rating: 3,
 			image_url: 'https://mezha.media/wp-content/uploads/2022/04/dyvni-dyva-600x400.jpg',
 		},
-	];
+	].map((show: IShow) => {
+		return new Show(show);
+	});
 
 	public onShowAdd(newShow: Show) {
 		this.shows.push(newShow);
