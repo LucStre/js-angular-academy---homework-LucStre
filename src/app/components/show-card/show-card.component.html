@@ -1,7 +1,7 @@
 <mat-card-header>
 	<div mat-card-avatar class="show-header-image"></div>
 	<mat-card-title>{{ show.title }}</mat-card-title>
-	<mat-card-subtitle>{{ show.average_rating === null ? 'no ratings' : show.average_rating }} </mat-card-subtitle>
+	<app-show-rating class="show-rating" [rating]="show.average_rating"></app-show-rating>
 </mat-card-header>
 <img
 	mat-card-image
