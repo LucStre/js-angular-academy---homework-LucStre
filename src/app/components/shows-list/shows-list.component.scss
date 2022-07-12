@@ -1,0 +1,16 @@
+.container {
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.show-card {
+    border-radius: 24px;
+    height: min-content;
+    width: min-content;
+    margin: 10px;
+    background-color: #F0F8FF;
+}
+
+h2{
+    margin: 15px;
+}

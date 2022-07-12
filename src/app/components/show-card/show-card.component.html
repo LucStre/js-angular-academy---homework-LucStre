@@ -1,0 +1,11 @@
+<mat-card-header class="show-card">
+	<div mat-card-avatar class="show-header-image"></div>
+	<mat-card-title>{{ title }}</mat-card-title>
+	<app-show-rating class="show-rating" [rating]="averageRating"></app-show-rating>
+</mat-card-header>
+<img
+	mat-card-image
+	id="image"
+	[src]="imageUrl"
+	onerror="this.src='https://www.poduzetnicki-inkubator-dnz.hr/images/image.php/no-image.png?width=600&height=400&cropratio=3:2&image=https://www.poduzetnicki-inkubator-dnz.hr/images/no-image.png'"
+/>
