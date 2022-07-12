@@ -1,0 +1,28 @@
+#image {
+    height: 240px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.show-card-header {
+    display: block;
+    padding: 12px;
+}
+
+.show-card {
+    border-radius: 24px;
+    margin: 10px;
+    background-color: #F0F8FF;
+    display: flex;
+}
+
+p {
+    width: 400px;
+    padding: 20px;
+}
+
+#rating {
+    margin-top: 20px;
+    font-size: initial;
+}
+

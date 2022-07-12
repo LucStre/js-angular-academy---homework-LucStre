@@ -1,0 +1,20 @@
+#shows {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#shows th,
+#shows tr {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #F0F8FF;
+    border: 2px solid;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+#show:hover > #link {
+    display: block;
+}

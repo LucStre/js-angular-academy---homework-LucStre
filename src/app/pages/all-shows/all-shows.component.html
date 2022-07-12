@@ -1,0 +1,10 @@
+<table id="shows">
+	<thead>
+		<th>Title</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let show of allShows">
+			<a href="show/{{ show.uuid }}" id="show">{{ show.show.title }}</a>
+		</tr>
+	</tbody>
+</table>
