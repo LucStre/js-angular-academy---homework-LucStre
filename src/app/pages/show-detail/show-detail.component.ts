@@ -11,7 +11,5 @@ import { ShowsService } from 'src/app/services/shows/shows.service';
 export class ShowDetailComponent {
 	public currentShow: IShowModel = this.showsService.get(parseInt(this.route.snapshot.params['id'])) as IShowModel;
 
-	constructor(private readonly route: ActivatedRoute, private readonly showsService: ShowsService) {
-		console.log(this.currentShow);
-	}
+	constructor(private readonly route: ActivatedRoute, private readonly showsService: ShowsService) {}
 }
