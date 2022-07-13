@@ -60,6 +60,10 @@ export class ShowsService {
 		},
 	];
 
+	constructor() {
+		console.log('Show service created');
+	}
+
 	public all(): Array<IShowModel> {
 		return this.shows;
 	}
