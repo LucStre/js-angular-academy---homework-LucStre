@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IShowModel } from 'src/app/interfaces/show-model.interface';
+import { Show } from 'src/app/services/show/show.model';
 import { ShowsService } from 'src/app/services/shows/shows.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ShowsService } from 'src/app/services/shows/shows.service';
 	styleUrls: ['./top-rated.component.scss'],
 })
 export class TopRatedComponent {
-	public topRatedShows: Array<IShowModel> = this.showsService.topRated() as Array<IShowModel>;
+	public topRatedShows: Array<Show> = this.showsService.topRated() as Array<Show>;
 
 	constructor(private readonly showsService: ShowsService) {}
 }

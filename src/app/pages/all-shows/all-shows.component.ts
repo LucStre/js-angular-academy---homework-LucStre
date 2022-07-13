@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IShowModel } from 'src/app/interfaces/show-model.interface';
+import { Show } from 'src/app/services/show/show.model';
 import { ShowsService } from 'src/app/services/shows/shows.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ShowsService } from 'src/app/services/shows/shows.service';
 	styleUrls: ['./all-shows.component.scss'],
 })
 export class AllShowsComponent {
-	public allShows: Array<IShowModel> = this.showsService.all();
+	public allShows: Array<Show> = this.showsService.all();
 
 	constructor(private readonly showsService: ShowsService) {}
 }
