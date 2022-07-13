@@ -4,7 +4,7 @@
 	</thead>
 	<tbody>
 		<tr *ngFor="let topRatedShow of topRatedShows">
-			<a href="show/{{ topRatedShow.uuid }}" id="show">{{ topRatedShow.show.title }}</a>
+			<a routerLink="../show/{{ topRatedShow.uuid }}" id="show">{{ topRatedShow.show.title }}</a>
 		</tr>
 	</tbody>
 </table>
