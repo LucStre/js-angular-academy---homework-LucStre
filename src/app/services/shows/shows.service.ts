@@ -60,11 +60,11 @@ export class ShowsService {
 		},
 	];
 
-	public all() {
+	public all(): Array<IShowModel> {
 		return this.shows;
 	}
 
-	public topRated() {
+	public topRated(): Array<IShowModel> | unknown {
 		return this.shows
 			.map((topRatedShow) => {
 				if (topRatedShow.show.averageRating ? topRatedShow.show.averageRating > 4 : false) return topRatedShow;
@@ -75,7 +75,7 @@ export class ShowsService {
 			});
 	}
 
-	public get(id: number) {
+	public get(id: number): IShowModel | undefined {
 		return this.shows.find((show) => show.uuid === id);
 	}
 }

@@ -49,7 +49,7 @@ export class ShowsContainerComponent {
 		return new Show(show);
 	});
 
-	public onShowAdd(newShow: Show) {
+	public onShowAdd(newShow: Show): void {
 		this.shows.push(newShow);
 	}
 }
