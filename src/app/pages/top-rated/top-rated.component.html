@@ -1,10 +1,1 @@
-<table id="shows">
-	<thead>
-		<th>Title</th>
-	</thead>
-	<tbody>
-		<tr *ngFor="let topRatedShow of topRatedShows">
-			<a routerLink="../show/{{ topRatedShow.id }}" id="show">{{ topRatedShow.title }}</a>
-		</tr>
-	</tbody>
-</table>
+<app-shows-list [shows]="topRatedShows"></app-shows-list>

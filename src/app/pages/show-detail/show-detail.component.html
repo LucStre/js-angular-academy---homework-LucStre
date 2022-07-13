@@ -1,18 +1,15 @@
 <mat-card class="show-card">
 	<mat-card-header class="show-card-header">
-		<mat-card-title>{{ currentShow.title }}</mat-card-title>
-		<mat-card-subtitle id="rating"
-			>Average rating:
-			{{ currentShow.averageRating ? currentShow.averageRating : 'no ratings' }}</mat-card-subtitle
-		>
+		<mat-card-title>{{ show.title }}</mat-card-title>
+		<app-show-rating class="show-rating" [rating]="show.averageRating"></app-show-rating>
 		<mat-card-content>
-			<p>{{ currentShow.description }}</p>
+			<p>{{ show.description }}</p>
 		</mat-card-content>
 	</mat-card-header>
 	<img
 		mat-card-image
 		id="image"
-		[src]="currentShow.imageUrl"
+		[src]="show.imageUrl"
 		onerror="this.src='https://www.poduzetnicki-inkubator-dnz.hr/images/image.php/no-image.png?width=600&height=400&cropratio=3:2&image=https://www.poduzetnicki-inkubator-dnz.hr/images/no-image.png'"
 	/>
 </mat-card>

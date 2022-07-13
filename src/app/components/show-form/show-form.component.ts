@@ -16,6 +16,7 @@ export class ShowFormComponent {
 			description: showDescription,
 			average_rating: null,
 			image_url: null,
+			id: 6,
 		});
 		this.addShow.emit(newShow);
 	}

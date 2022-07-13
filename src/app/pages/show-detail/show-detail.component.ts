@@ -9,7 +9,7 @@ import { ShowsService } from 'src/app/services/shows/shows.service';
 	styleUrls: ['./show-detail.component.scss'],
 })
 export class ShowDetailComponent {
-	public currentShow: Show = this.showsService.get(parseInt(this.route.snapshot.params['id'])) as Show;
+	public show: Show = this.showsService.get(parseInt(this.route.snapshot.params['id'])) as Show;
 
 	constructor(private readonly route: ActivatedRoute, private readonly showsService: ShowsService) {}
 }
