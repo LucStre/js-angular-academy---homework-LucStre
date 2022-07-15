@@ -10,12 +10,13 @@ import { Show } from 'src/app/services/show/show.model';
 export class ShowFormComponent {
 	@Output() addShow = new EventEmitter<Show>();
 
-	public onAddButtonClick(showTitle: string, showDescription: string) {
+	public onAddButtonClick(showTitle: string, showDescription: string): void {
 		const newShow: Show = new Show({
 			title: showTitle,
 			description: showDescription,
 			average_rating: null,
 			image_url: null,
+			id: 6,
 		});
 		this.addShow.emit(newShow);
 	}

@@ -1,7 +1,8 @@
-<h2>Shows</h2>
 <ul class="container">
 	<mat-card class="show-card" *ngFor="let show of shows">
-		<app-show-card [title]="show.title" [averageRating]="show.averageRating" [imageUrl]="show.imageUrl">
-		</app-show-card>
+		<a routerLink="/show/{{ show.id }}">
+			<app-show-card [title]="show.title" [averageRating]="show.averageRating" [imageUrl]="show.imageUrl">
+			</app-show-card>
+		</a>
 	</mat-card>
 </ul>

@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ShowRatingComponent {
 	@Input() public rating: number | null = null;
 
-	public ratings(showRating: number | null) {
+	public ratings(showRating: number | null): Array<number> | undefined {
 		if (showRating === null) return;
 		return Array(Math.round(showRating)).map((x, i) => i);
 	}

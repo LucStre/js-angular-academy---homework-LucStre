@@ -1,14 +1,12 @@
-import { Component } from '@angular/core';
-import { IShow } from 'src/app/services/show/show.interface';
-import { Show } from 'src/app/services/show/show.model';
+import { Injectable } from '@angular/core';
+import { IShow } from '../show/show.interface';
+import { Show } from '../show/show.model';
 
-@Component({
-	selector: 'app-shows-container',
-	templateUrl: './shows-container.component.html',
-	styleUrls: ['./shows-container.component.scss'],
+@Injectable({
+	providedIn: 'root',
 })
-export class ShowsContainerComponent {
-	public shows: Array<Show> = [
+export class ShowsService {
+	private shows: Array<Show> = [
 		{
 			title: 'The Crown',
 			description:
@@ -54,7 +52,26 @@ export class ShowsContainerComponent {
 		return new Show(show);
 	});
 
-	public onShowAdd(newShow: Show): void {
-		this.shows.push(newShow);
+	constructor() {
+		console.log('Show service created');
+	}
+
+	public all(): Array<Show> {
+		return this.shows;
+	}
+
+	public topRated(): Array<Show> | unknown {
+		return this.shows
+			.map((topRatedShow) => {
+				if (topRatedShow.averageRating ? topRatedShow.averageRating > 4 : false) return topRatedShow;
+				return;
+			})
+			.filter((value) => {
+				return value !== undefined;
+			});
+	}
+
+	public get(id: number): Show | undefined {
+		return this.shows.find((show) => show.id === id);
 	}
 }
