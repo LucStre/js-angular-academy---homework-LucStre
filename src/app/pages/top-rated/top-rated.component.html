@@ -1,1 +1,5 @@
-<app-shows-list *ngIf="topRatedShows$ | async as topRatedShows" [shows]="topRatedShows"></app-shows-list>
+<app-shows-list *ngIf="topRatedShows$ | async as topRatedShows; else showSpinner" [shows]="topRatedShows">
+</app-shows-list>
+<ng-template #showSpinner>
+	<app-show-spinner></app-show-spinner>
+</ng-template>

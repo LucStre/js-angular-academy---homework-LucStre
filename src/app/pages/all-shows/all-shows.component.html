@@ -1,1 +1,4 @@
-<app-shows-list *ngIf="allShows$ | async as allShows" [shows]="allShows"></app-shows-list>
+<app-shows-list *ngIf="allShows$ | async as allShows; else showSpinner" [shows]="allShows"></app-shows-list>
+<ng-template #showSpinner>
+	<app-show-spinner></app-show-spinner>
+</ng-template>
