@@ -6,7 +6,7 @@ export class Show {
 	public description: string;
 	public averageRating: number | null;
 	public imageUrl: string | null;
-	public id: number;
+	public id: string;
 	public reviews: IReview[];
 
 	constructor(show: IShow) {
