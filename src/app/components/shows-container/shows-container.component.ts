@@ -16,6 +16,7 @@ export class ShowsContainerComponent {
 			average_rating: 5,
 			image_url: 'https://www.znet.hr/wp-content/uploads/2021/04/crown.jpg',
 			id: 1,
+			reviews: [],
 		},
 		{
 			title: 'Merlin',
@@ -24,6 +25,7 @@ export class ShowsContainerComponent {
 			average_rating: 4,
 			image_url: 'https://static.next-episode.net/tv-shows-images/huge/merlin.jpg',
 			id: 2,
+			reviews: [],
 		},
 		{
 			title: 'Friends',
@@ -33,6 +35,7 @@ export class ShowsContainerComponent {
 			image_url:
 				'https://cdn.vox-cdn.com/thumbor/sK3gMTENF_LR1DhAUl9e3V_5jC4=/0x0:2592x2017/1200x800/filters:focal(1089x801:1503x1215)/cdn.vox-cdn.com/uploads/chorus_image/image/65282724/friendscast.0.0.1429818191.0.jpg',
 			id: 3,
+			reviews: [],
 		},
 		{
 			title: 'The Office',
@@ -41,6 +44,7 @@ export class ShowsContainerComponent {
 			average_rating: 4,
 			image_url: 'https://entertainment.time.com/wp-content/uploads/sites/3/2013/05/nup_155312_23351.jpg?w=600',
 			id: 4,
+			reviews: [],
 		},
 		{
 			title: 'Stranger Things',
@@ -49,6 +53,7 @@ export class ShowsContainerComponent {
 			average_rating: 3,
 			image_url: 'https://mezha.media/wp-content/uploads/2022/04/dyvni-dyva-600x400.jpg',
 			id: 5,
+			reviews: [],
 		},
 	].map((show: IShow) => {
 		return new Show(show);
