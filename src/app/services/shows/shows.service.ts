@@ -129,14 +129,9 @@ export class ShowsService {
 	public topRated(): Observable<Array<Show>> | unknown {
 		return this.shows$.pipe(
 			map((shows: Array<Show>) => {
-				return shows
-					.map((topRatedShow) => {
-						if (topRatedShow.averageRating ? topRatedShow.averageRating > 4 : false) return topRatedShow;
-						return;
-					})
-					.filter((value) => {
-						return value !== undefined;
-					});
+				return shows.filter((topRatedShow) => {
+					return topRatedShow.averageRating ? topRatedShow.averageRating > 4 : false;
+				});
 			}),
 			delay(1000),
 		);
