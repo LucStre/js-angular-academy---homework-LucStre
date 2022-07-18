@@ -1,4 +1,5 @@
-<app-shows-list *ngIf="allShows$ | async as allShows; else showSpinner" [shows]="allShows"></app-shows-list>
+<app-shows-list *ngIf="allShows$ | async as allShows; else showSpinner" [shows]="allShows" onerror=""> </app-shows-list>
 <ng-template #showSpinner>
 	<app-show-spinner></app-show-spinner>
 </ng-template>
+<app-retry [tryAgainObservable]="allShows$"></app-retry>

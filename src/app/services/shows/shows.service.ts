@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, delay } from 'rxjs';
+import { BehaviorSubject, Observable, map, delay, throwError } from 'rxjs';
 import { IShow } from '../show/show.interface';
 import { Show } from '../show/show.model';
 
@@ -120,6 +120,11 @@ export class ShowsService {
 			}
 		});
 		this.shows$.next(loadedShows);
+	}
+
+	private simulateError() {
+		//if (Math.round(Math.random() * 10) == 0) {}
+		this.shows$.error(new Error('An error occurred.'));
 	}
 
 	public all(): Observable<Array<Show>> {
