@@ -1,2 +1,4 @@
 <p>{{ rating === null ? 'no ratings' : rating }}</p>
-<mat-icon class="star" *ngFor="let star of ratings(rating)">star</mat-icon>
+<mat-icon class="star" *ngFor="let star of ratings(5); let i = index" [ngClass]="{ 'no-star': i >= rating! }">
+	star
+</mat-icon>

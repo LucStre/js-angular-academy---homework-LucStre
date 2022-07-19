@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Show } from 'src/app/services/show/show.model';
 import { ShowsService } from 'src/app/services/shows/shows.service';
 
@@ -8,7 +9,7 @@ import { ShowsService } from 'src/app/services/shows/shows.service';
 	styleUrls: ['./top-rated.component.scss'],
 })
 export class TopRatedComponent {
-	public topRatedShows: Array<Show> = this.showsService.topRated() as Array<Show>;
+	public topRatedShows$: Observable<Array<Show>> = this.showsService.topRated() as Observable<Array<Show>>;
 
 	constructor(private readonly showsService: ShowsService) {}
 }

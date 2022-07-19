@@ -1,1 +1,1 @@
-<app-shows-list [shows]="topRatedShows"></app-shows-list>
+<app-shows-list *ngIf="topRatedShows$ | async as topRatedShows" [shows]="topRatedShows"></app-shows-list>
