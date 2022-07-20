@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IAuthData } from 'src/app/interfaces/auth-data.interface';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent {
 	public form = new FormGroup({
-		email: new FormControl('', [Validators.required, Validators.email]),
+		email: new FormControl('', [Validators.required, Validators.email, this.emailNameValidator()]),
 		password: new FormControl('', [Validators.required, Validators.minLength(8)]),
 		password_confirmation: new FormControl('', [Validators.required, Validators.minLength(8)]),
 	});
@@ -30,5 +30,12 @@ export class RegisterComponent {
 				this.router.navigate(['']);
 				console.log(resp);
 			});
+	}
+
+	private emailNameValidator(): ValidatorFn {
+		return (control: AbstractControl): ValidationErrors | null => {
+			const required = /.com|.hr/i.test(control.value);
+			return required ? null : { requiredName: { value: control.value } };
+		};
 	}
 }
