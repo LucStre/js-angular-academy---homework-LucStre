@@ -35,7 +35,9 @@
 		<p>Already have an account? <a routerLink="/login">Login</a></p>
 
 		<mat-card-actions>
-			<button mat-stroked-button color="primary" (click)="onRegisterClick()">Register</button>
+			<button mat-stroked-button color="primary" [disabled]="form.invalid" (click)="onRegisterClick($event)">
+				Register
+			</button>
 		</mat-card-actions>
 	</mat-card>
 </form>

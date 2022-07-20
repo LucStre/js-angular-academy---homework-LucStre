@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IAuthData } from 'src/app/interfaces/auth-data.interface';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
 	selector: 'app-register',
@@ -13,9 +16,19 @@ export class RegisterComponent {
 		password_confirmation: new FormControl('', [Validators.required, Validators.minLength(8)]),
 	});
 
-	constructor() {}
+	constructor(private readonly authService: AuthService, private readonly router: Router) {}
 
-	public onRegisterClick(): void {
-		console.log(this.form.controls.email.value);
+	public onRegisterClick(event: Event): void {
+		event.preventDefault();
+		this.authService
+			.register({
+				email: this.form.controls.email.value,
+				password: this.form.controls.password.value,
+				password_confirmation: this.form.controls.password_confirmation.value,
+			} as IAuthData)
+			.subscribe((resp) => {
+				this.router.navigate(['']);
+				console.log(resp);
+			});
 	}
 }

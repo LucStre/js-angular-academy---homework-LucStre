@@ -21,7 +21,9 @@
 		<p>Don't have an account? <a routerLink="/register">Register</a></p>
 
 		<mat-card-actions>
-			<button mat-stroked-button color="primary" (click)="onLoginClick()">Login</button>
+			<button mat-stroked-button color="primary" [disabled]="form.invalid" (click)="onLoginClick($event)">
+				Login
+			</button>
 		</mat-card-actions>
 	</mat-card>
 </form>
