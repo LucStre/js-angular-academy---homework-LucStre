@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { IAuthData } from 'src/app/interfaces/auth-data.interface';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,7 +16,11 @@ export class LoginComponent {
 		password: new FormControl('', [Validators.required, Validators.minLength(8)]),
 	});
 
-	constructor(private readonly authService: AuthService, private readonly router: Router) {}
+	constructor(
+		private readonly authService: AuthService,
+		private readonly router: Router,
+		private _snackBar: MatSnackBar,
+	) {}
 
 	public onLoginClick(event: Event): void {
 		event.preventDefault();
@@ -28,5 +33,11 @@ export class LoginComponent {
 				this.router.navigate(['']);
 				console.log(resp);
 			});
+	}
+
+	openSnackBar() {
+		this._snackBar.open('Invalid login. Try again!', undefined, {
+			duration: 5 * 1000,
+		});
 	}
 }
