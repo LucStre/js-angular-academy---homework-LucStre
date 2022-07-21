@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IAuthData } from 'src/app/interfaces/auth-data.interface';
 import { AuthService } from 'src/app/services/auth.service';
+import { matchValidator } from 'src/app/validators/match-validator';
+import { nameValidator } from 'src/app/validators/name-validator';
 
 @Component({
 	selector: 'app-register',
@@ -12,11 +14,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent {
 	public form = new FormGroup(
 		{
-			email: new FormControl('', [Validators.required, Validators.email, this.emailNameValidator()]),
+			email: new FormControl('', [Validators.required, Validators.email, nameValidator(/.com$|.hr$/)]),
 			password: new FormControl('', [Validators.required, Validators.minLength(8)]),
 			password_confirmation: new FormControl('', [Validators.required, Validators.minLength(8)]),
 		},
-		[this.passwordConfirmationValidator()],
+		[matchValidator('password', 'password_confirmation')],
 	);
 
 	constructor(private readonly authService: AuthService, private readonly router: Router) {}
@@ -35,23 +37,7 @@ export class RegisterComponent {
 			});
 	}
 
-	private emailNameValidator(): ValidatorFn {
-		return (control: AbstractControl): ValidationErrors | null => {
-			const required = /.com$|.hr$/.test(control.value);
-			return required ? null : { requiredName: { value: control.value } };
-		};
-	}
-
-	private passwordConfirmationValidator(): ValidatorFn {
-		return (control: AbstractControl): ValidationErrors | null => {
-			const passControl = control.get('password');
-			const passConfirmationControl = control.get('password_confirmation');
-
-			return passControl?.value === passConfirmationControl?.value ? null : { passwordMismatch: true };
-		};
-	}
-
 	public get passwordMismatchError() {
-		return this.form.getError('passwordMismatch') && this.form.get('password_confirmation')?.touched;
+		return this.form.getError('mismatch') && this.form.get('password_confirmation')?.touched;
 	}
 }
