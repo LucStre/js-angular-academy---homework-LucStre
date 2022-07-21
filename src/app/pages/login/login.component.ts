@@ -20,7 +20,7 @@ export class LoginComponent {
 	constructor(
 		private readonly authService: AuthService,
 		private readonly router: Router,
-		private _snackBar: MatSnackBar,
+		private readonly snackBar: MatSnackBar,
 	) {}
 
 	public onLoginClick(event: Event): void {
@@ -32,7 +32,7 @@ export class LoginComponent {
 			} as IAuthData)
 			.pipe(
 				catchError(async () => {
-					this._snackBar.open('Invalid login credentials. Try again!', 'Close', {
+					this.snackBar.open('Invalid login credentials. Try again!', 'Close', {
 						duration: 5 * 1000,
 					});
 				}),
