@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { catchError, EMPTY } from 'rxjs';
 import { ILoginData } from 'src/app/interfaces/login-data.interface';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -15,7 +17,11 @@ export class LoginComponent {
 		password: new FormControl('', [Validators.required, Validators.minLength(8)]),
 	});
 
-	constructor(private readonly authService: AuthService, private readonly router: Router) {}
+	constructor(
+		private readonly authService: AuthService,
+		private readonly router: Router,
+		private readonly snackBar: MatSnackBar,
+	) {}
 
 	public onLoginClick(event: Event): void {
 		event.preventDefault();
@@ -24,9 +30,19 @@ export class LoginComponent {
 				email: this.form.controls.email.value,
 				password: this.form.controls.password.value,
 			} as ILoginData)
+			.pipe(
+				catchError(() => {
+					this.snackBar.open('Invalid login credentials. Try again!', 'Close', {
+						duration: 5 * 1000,
+					});
+					return EMPTY;
+				}),
+			)
 			.subscribe((resp) => {
-				this.router.navigate(['']);
 				console.log(resp);
+				if (resp) {
+					this.router.navigate(['']);
+				}
 			});
 	}
 }

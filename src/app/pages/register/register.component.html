@@ -32,6 +32,8 @@
 			</div>
 		</mat-card-actions>
 
+		<div class="mismatch" *ngIf="passwordMismatchError">Passwords don't match!</div>
+
 		<p>Already have an account? <a routerLink="/login">Login</a></p>
 
 		<mat-card-actions>
