@@ -34,7 +34,7 @@ export class RegisterComponent {
 
 	private emailNameValidator(): ValidatorFn {
 		return (control: AbstractControl): ValidationErrors | null => {
-			const required = /.com|.hr/i.test(control.value);
+			const required = /.com$|.hr$/.test(control.value);
 			return required ? null : { requiredName: { value: control.value } };
 		};
 	}
