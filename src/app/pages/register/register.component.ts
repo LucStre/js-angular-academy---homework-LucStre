@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IAuthData } from 'src/app/interfaces/auth-data.interface';
+import { IRegisterData } from 'src/app/interfaces/register-data.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { matchValidator } from 'src/app/validators/match-validator';
 import { nameValidator } from 'src/app/validators/name-validator';
@@ -30,7 +30,7 @@ export class RegisterComponent {
 				email: this.form.controls.email.value,
 				password: this.form.controls.password.value,
 				password_confirmation: this.form.controls.password_confirmation.value,
-			} as IAuthData)
+			} as IRegisterData)
 			.subscribe((resp) => {
 				this.router.navigate(['']);
 				console.log(resp);
