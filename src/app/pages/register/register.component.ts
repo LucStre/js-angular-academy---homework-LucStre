@@ -10,11 +10,14 @@ import { AuthService } from 'src/app/services/auth.service';
 	styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-	public form = new FormGroup({
-		email: new FormControl('', [Validators.required, Validators.email, this.emailNameValidator()]),
-		password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-		password_confirmation: new FormControl('', [Validators.required, Validators.minLength(8)]),
-	});
+	public form = new FormGroup(
+		{
+			email: new FormControl('', [Validators.required, Validators.email, this.emailNameValidator()]),
+			password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+			password_confirmation: new FormControl('', [Validators.required, Validators.minLength(8)]),
+		},
+		[this.passwordConfirmationValidator()],
+	);
 
 	constructor(private readonly authService: AuthService, private readonly router: Router) {}
 
@@ -37,5 +40,18 @@ export class RegisterComponent {
 			const required = /.com$|.hr$/.test(control.value);
 			return required ? null : { requiredName: { value: control.value } };
 		};
+	}
+
+	private passwordConfirmationValidator(): ValidatorFn {
+		return (control: AbstractControl): ValidationErrors | null => {
+			const passControl = control.get('password');
+			const passConfirmationControl = control.get('password_confirmation');
+
+			return passControl?.value === passConfirmationControl?.value ? null : { passwordMismatch: true };
+		};
+	}
+
+	public get passwordMismatchError() {
+		return this.form.getError('passwordMismatch') && this.form.get('password_confirmation')?.touched;
 	}
 }
