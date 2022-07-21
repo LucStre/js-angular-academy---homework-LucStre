@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IAuthData } from 'src/app/interfaces/auth-data.interface';
+import { ILoginData } from 'src/app/interfaces/login-data.interface';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class LoginComponent {
 			.login({
 				email: this.form.controls.email.value,
 				password: this.form.controls.password.value,
-			} as IAuthData)
+			} as ILoginData)
 			.subscribe((resp) => {
 				this.router.navigate(['']);
 				console.log(resp);
