@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IRegisterData } from 'src/app/interfaces/register-data.interface';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { matchValidator } from 'src/app/validators/match-validator';
 import { nameValidator } from 'src/app/validators/name-validator';
 
