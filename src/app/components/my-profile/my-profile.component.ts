@@ -9,6 +9,10 @@ export class MyProfileComponent {
 	public userEmail: string | null = '';
 
 	constructor() {
-		this.userEmail = sessionStorage.getItem('loggedUser');
+		const loggedUser = sessionStorage.getItem('loggedUser');
+		if (loggedUser) {
+			const user = JSON.parse(loggedUser);
+			this.userEmail = user.email;
+		}
 	}
 }
