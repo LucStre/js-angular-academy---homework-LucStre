@@ -14,7 +14,11 @@ export class NavigationComponent {
 		},
 		{
 			url: 'top-rated',
-			title: 'Top rated shows',
+			title: 'Top rated',
+		},
+		{
+			url: 'my-profile',
+			title: 'My profile',
 		},
 	];
 }

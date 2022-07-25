@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { AllShowsComponent } from './pages/all-shows/all-shows.component';
@@ -20,6 +21,10 @@ const routes: Routes = [
 			{
 				path: 'top-rated',
 				component: TopRatedComponent,
+			},
+			{
+				path: 'my-profile',
+				component: MyProfileComponent,
 			},
 			{
 				path: 'show/:id',
