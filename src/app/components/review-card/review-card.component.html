@@ -1,0 +1,14 @@
+<ul *ngIf="reviews.length === 0">
+	This show has no reviews
+</ul>
+<mat-card class="review-card" *ngFor="let review of reviews">
+	<div mat-card-avatar class="example-header-image" style="background-image:url({{ review.user.image_url }});"></div>
+	<div class="rating-user">
+		<div>{{ review.user.email }}</div>
+		<app-show-rating class="show-rating" [rating]="review.rating"></app-show-rating>
+	</div>
+
+	<mat-card-content>
+		<p>{{ review.comment }}</p>
+	</mat-card-content>
+</mat-card>
