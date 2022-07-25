@@ -32,8 +32,9 @@ export class RegisterComponent {
 				password_confirmation: this.form.controls.password_confirmation.value,
 			} as IRegisterData)
 			.subscribe((resp) => {
+				console.log(resp.user);
+				sessionStorage.setItem('loggedUser', resp.user.email);
 				this.router.navigate(['']);
-				console.log(resp);
 			});
 	}
 

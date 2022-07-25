@@ -1,10 +1,29 @@
-<header>
-	<div class="container centered">
-		<h1>Shows app</h1>
+<mat-drawer-container class="main-container" autosize>
+	<mat-drawer #drawer class="drawer" id="drawerId" mode="side" opened>
+		<img src="assets/logo/logo.svg" alt="App logo" />
 		<app-navigation></app-navigation>
-	</div>
-</header>
+		<button
+			mat-button
+			color="primary"
+			routerLink="/logout"
+			[routerLinkActive]="'active'"
+			[routerLinkActiveOptions]="{ exact: true }"
+		>
+			Log out
+		</button>
+	</mat-drawer>
+	<mat-drawer-content>
+		<router-outlet></router-outlet>
+	</mat-drawer-content>
+	<button type="button" mat-button (click)="drawer.toggle()">
+		<mat-icon>menu</mat-icon>
+	</button>
+</mat-drawer-container>
 
-<section class="centered">
-	<router-outlet></router-outlet>
-</section>
+<mat-drawer-container class="example-container" autosize>
+	<mat-drawer #drawer class="example-sidenav">
+		<p>Predaja</p>
+	</mat-drawer>
+
+	<div class="example-sidenav-content"></div>
+</mat-drawer-container>

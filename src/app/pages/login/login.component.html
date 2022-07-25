@@ -1,6 +1,6 @@
 <form [formGroup]="form">
-	<mat-card>
-		<mat-card-title>Login</mat-card-title>
+	<mat-card class="shows-app">
+		<img src="assets/logo/logo.svg" alt="App logo" />
 		<mat-card-actions>
 			<div class="container">
 				<mat-icon>person</mat-icon>
@@ -18,12 +18,12 @@
 			</div>
 		</mat-card-actions>
 
-		<p>Don't have an account? <a routerLink="/register">Register</a></p>
-
 		<mat-card-actions>
-			<button mat-stroked-button color="primary" [disabled]="form.invalid" (click)="onLoginClick($event)">
-				Login
+			<button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onLoginClick($event)">
+				Log in
 			</button>
 		</mat-card-actions>
+
+		<p>Don't have an account? <a routerLink="/register">Register</a></p>
 	</mat-card>
 </form>

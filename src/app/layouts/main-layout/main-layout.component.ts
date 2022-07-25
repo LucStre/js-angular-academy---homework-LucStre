@@ -5,4 +5,6 @@ import { Component, OnInit } from '@angular/core';
 	templateUrl: './main-layout.component.html',
 	styleUrls: ['./main-layout.component.scss'],
 })
-export class MainLayoutComponent {}
+export class MainLayoutComponent {
+	showFiller = false;
+}
