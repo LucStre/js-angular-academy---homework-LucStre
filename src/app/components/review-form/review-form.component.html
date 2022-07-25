@@ -1,0 +1,27 @@
+<form [formGroup]="form" *ngIf="user">
+        <mat-card class="review-card">
+                <mat-form-field appearance="outline">
+                        <input matInput placeholder="Enter review" formControlName="comment" />
+                </mat-form-field>
+                <div class="star-container">
+                        <button mat-button (click)="onStarClick(1)" [ngClass]="{ 'star': stars[0] }">
+                                <mat-icon>star</mat-icon>
+                        </button>
+                        <button mat-button (click)="onStarClick(2)" [ngClass]="{ 'star': stars[1] }">
+                                <mat-icon>star</mat-icon>
+                        </button>
+                        <button mat-button (click)="onStarClick(3)" [ngClass]="{ 'star': stars[2] }">
+                                <mat-icon>star</mat-icon>
+                        </button>
+                        <button mat-button (click)="onStarClick(4)" [ngClass]="{ 'star': stars[3] }">
+                                <mat-icon>star</mat-icon>
+                        </button>
+                        <button mat-button (click)="onStarClick(5)" [ngClass]="{ 'star': stars[4] }">
+                                <mat-icon>star</mat-icon>
+                        </button>
+                </div>
+
+                <button mat-raised-button color="primary" [disabled]="form.invalid"
+                        (click)="onPostClick($event)">Post</button>
+        </mat-card>
+</form>
