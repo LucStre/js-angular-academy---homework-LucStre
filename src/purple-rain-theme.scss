@@ -217,7 +217,5 @@ $warn: mat-palette($warn-color-palette, 400);
 }
 
 @media screen and (max-width: 375px) and (max-height: 700px){
-  #drawer{
-    display: none;
-  }
+  //side drawer closed
 }
