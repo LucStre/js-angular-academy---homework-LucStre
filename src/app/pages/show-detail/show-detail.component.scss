@@ -5,15 +5,28 @@ p {
 
 .show-rating {
     display: flex;
-    padding: 20px;
 }
 
 .container{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     overflow: auto;
 }
 
+.inner-container{
+    padding: 30px 0px 0px 10px;
+}
+
+
 mat-card-title{
-    font-size:24px;
+    font-size: 24px;
+}
+
+img{
+    max-height: 439px;
+}
+
+#show-card{
+    margin: 30px;
 }
