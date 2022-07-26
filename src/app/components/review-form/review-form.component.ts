@@ -13,14 +13,15 @@ import { ReviewService } from 'src/app/services/review/review.service';
 export class ReviewFormComponent {
 	public form = new FormGroup({
 		comment: new FormControl('', Validators.required),
-		rating: new FormControl(0, Validators.required),
+		rating: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(5)]),
 	});
 	public user: IUserData = {
 		id: '',
 		email: '',
 		image_url: '',
 	};
-	public stars: Array<Boolean> = new Array(5).fill(false);
+
+	private displayValue: number = 0;
 
 	constructor(private readonly reviewService: ReviewService, private readonly route: ActivatedRoute) {
 		const loggedUser = sessionStorage.getItem('loggedUser');
@@ -29,17 +30,21 @@ export class ReviewFormComponent {
 		}
 	}
 
-	public onStarClick(starNumber: number) {
-		if (this.stars[starNumber]) {
-			for (let i = starNumber; i < this.stars.length; i++) {
-				this.stars[i] = false;
-			}
-		} else {
-			for (let i = 0; i < starNumber; i++) {
-				this.stars[i] = true;
-			}
-		}
+	public onStarClick(starNumber: number): void {
+		this.displayValue = starNumber;
 		this.form.controls['rating'].setValue(starNumber);
+	}
+
+	public onMouseEnter(starNumber: number): void {
+		this.displayValue = starNumber;
+	}
+
+	public onMouseLeave(): void {
+		this.displayValue = this.form.controls['rating'].value || 0;
+	}
+
+	public isStarFilled(index: number): boolean {
+		return this.displayValue >= index;
 	}
 
 	public onPostClick(event: Event): void {
