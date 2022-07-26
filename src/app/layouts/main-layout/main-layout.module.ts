@@ -6,9 +6,18 @@ import { NavigationModule } from 'src/app/components/navigation/navigation.modul
 import { MainLayoutComponent } from './main-layout.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
 	declarations: [MainLayoutComponent],
-	imports: [CommonModule, RouterModule, NavigationModule, MatSidenavModule, MatIconModule, MatButtonModule],
+	imports: [
+		CommonModule,
+		RouterModule,
+		NavigationModule,
+		MatSidenavModule,
+		MatIconModule,
+		MatButtonModule,
+		LayoutModule,
+	],
 })
 export class MainLayoutModule {}
