@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReviewCardComponent } from './review-card.component';
+import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { ShowRatingModule } from '../show-rating/show-rating.module';
+import { ReviewRatingModule } from '../review-rating/review-rating.module';
+import { ReviewCardComponent } from './review-card.component';
 
 @NgModule({
 	declarations: [ReviewCardComponent],
 	exports: [ReviewCardComponent],
-	imports: [CommonModule, MatCardModule, ShowRatingModule],
+	imports: [CommonModule, MatCardModule, ReviewRatingModule],
 })
 export class ReviewCardModule {}

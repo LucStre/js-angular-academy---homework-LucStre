@@ -1,4 +1,4 @@
-.show-rating {
+.review-rating {
     display: flex;
 }
 
@@ -9,5 +9,8 @@
 .review-card{
     border-radius: 24px;
     display: flex;
+    flex-wrap: wrap;
     margin: 20px;
+    padding: 20px;
+    gap: 20px;
 }

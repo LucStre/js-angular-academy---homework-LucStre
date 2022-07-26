@@ -1,0 +1,4 @@
+<p>{{ rating === 0 ? 'no ratings' : rating + '/5' }}</p>
+<mat-icon *ngFor="let star of [].constructor(5); index as i">
+	{{ i >= rating ? 'star_outline' : 'star' }}
+</mat-icon>
