@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-	<mat-card class="shows-app">
+	<mat-card>
 		<img src="assets/logo/logo.svg" alt="App logo" />
 		<mat-card-actions>
 			<div class="container">
@@ -15,8 +15,8 @@
 				<mat-form-field appearance="outline">
 					<mat-label>Password</mat-label>
 					<input matInput placeholder="Enter password" type="password" formControlName="password" />
+					<mat-hint>At least 8 characters</mat-hint>
 				</mat-form-field>
-				<p>At least 8 characters</p>
 			</div>
 
 			<div class="container">
@@ -29,8 +29,10 @@
 						type="password"
 						formControlName="password_confirmation"
 					/>
+					<mat-hint>
+						<mat-error *ngIf="passwordMismatchError">Passwords don't match!</mat-error>
+					</mat-hint>
 				</mat-form-field>
-				<p class="mismatch" *ngIf="passwordMismatchError">Passwords don't match!</p>
 			</div>
 		</mat-card-actions>
 
@@ -40,6 +42,8 @@
 			</button>
 		</mat-card-actions>
 
-		<p>Already have an account? <a routerLink="/login">Login</a></p>
+		<p>
+			Already have an account? <b><a routerLink="/login">Login</a></b>
+		</p>
 	</mat-card>
 </form>
