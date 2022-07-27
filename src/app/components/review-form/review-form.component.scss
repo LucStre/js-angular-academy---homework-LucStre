@@ -1,0 +1,39 @@
+.review-card{
+    .mat-raised-button.mat-primary {
+        color: #371687;
+        border-radius: 32px;
+        padding: 20px 40px;
+        max-height: 52px;
+        text-transform: uppercase;
+        line-height: 14px;
+
+        &.mat-button-disabled {
+            background-color: rgba($color: #ffffff, $alpha: 0.4);
+        }
+    }
+    background-color: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    border-style: none;
+}
+
+.star-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+}
+
+#starButton{
+    padding: 0px;
+    min-width: 0px;
+}
+
+mat-form-field{
+    border-radius: 10px;
+    background-color: white;
+    color:#1b004c;
+    width: 100%;
+    height: 80px;
+}

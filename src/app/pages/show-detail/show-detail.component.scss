@@ -1,5 +1,4 @@
 p {
-    width: 400px;
     padding: 20px;
 }
 
@@ -29,4 +28,14 @@ img{
 
 #show-card{
     margin: 30px;
+}
+
+.reviews{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: baseline;
+}
+
+.review{
+    width: 90%;
 }

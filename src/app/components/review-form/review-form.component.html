@@ -1,0 +1,25 @@
+<form [formGroup]="form" *ngIf="user.email">
+	<mat-card class="review-card">
+		<mat-form-field appearance="outline">
+			<textarea matInput formControlName="comment"></textarea>
+		</mat-form-field>
+		<div class="star-container">
+			<div>
+				Rating
+				<button
+					mat-button
+					id="starButton"
+					*ngFor="let n of [].constructor(5); index as i"
+					(click)="onStarClick(i + 1)"
+					(mouseenter)="onMouseEnter(i + 1)"
+					(mouseleave)="onMouseLeave()"
+				>
+					<mat-icon>{{ isStarFilled(i + 1) ? 'star' : 'star_outline' }}</mat-icon>
+				</button>
+			</div>
+			<button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onPostClick($event)">
+				Post
+			</button>
+		</div>
+	</mat-card>
+</form>

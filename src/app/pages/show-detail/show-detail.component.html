@@ -16,5 +16,11 @@
 			</mat-card-content>
 		</div>
 	</mat-card>
-	<app-review-card [reviews]="show.reviews"></app-review-card>
+	<div class="reviews">
+		<p>Reviews</p>
+		<div class="review">
+			<app-review-form></app-review-form>
+			<app-review-card [reviews]="show.reviews"></app-review-card>
+		</div>
+	</div>
 </div>
