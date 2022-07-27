@@ -1,17 +1,12 @@
-mat-form-field {
-    display: block;
+.mismatch{
+    color:red;
 }
 
-.container {
-    display: flex;
-    align-items: center;
-    margin: 15px;
+p{
+    margin: 0px;
 }
 
-mat-icon {
-    margin-bottom: 20px;
-}
-
-.mismatch {
-    color: red;
+.shows-app{
+    border-radius: 24px;
+    padding: 50px;
 }

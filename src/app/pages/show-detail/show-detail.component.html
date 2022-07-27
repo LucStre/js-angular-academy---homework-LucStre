@@ -1,26 +1,20 @@
 <div *ngIf="show$ | async as show">
-	<mat-card class="show-card">
-		<mat-card-header class="show-card-header">
-			<mat-card-title>{{ show.title }}</mat-card-title>
-			<app-show-rating class="show-rating" [rating]="show.averageRating"></app-show-rating>
-			<mat-card-content>
-				<p>{{ show.description }}</p>
-			</mat-card-content>
-		</mat-card-header>
+	<mat-card id="show-card">
 		<img
 			mat-card-image
-			id="image"
 			[src]="show.imageUrl"
 			onerror="this.src='https://www.poduzetnicki-inkubator-dnz.hr/images/image.php/no-image.png?width=600&height=400&cropratio=3:2&image=https://www.poduzetnicki-inkubator-dnz.hr/images/no-image.png'"
 		/>
+		<div class="container">
+			<div class="inner-container">
+				<mat-card-title>{{ show.title }}</mat-card-title>
+				<app-show-rating class="show-rating" [rating]="show.averageRating"></app-show-rating>
+			</div>
+
+			<mat-card-content>
+				<p>{{ show.description }}</p>
+			</mat-card-content>
+		</div>
 	</mat-card>
-	<ul *ngIf="show.reviews.length === 0">
-		This show has no reviews
-	</ul>
-	<mat-card class="show-card" *ngFor="let review of show.reviews">
-		<app-show-rating class="show-rating" [rating]="review.rating"></app-show-rating>
-		<mat-card-content>
-			<p>{{ review.comment }}</p>
-		</mat-card-content>
-	</mat-card>
+	<app-review-card [reviews]="show.reviews"></app-review-card>
 </div>

@@ -1,14 +1,16 @@
-#image {
+.image {
     height: 240px;
     width: 300px;
-    overflow: hidden;
 }
 
 .show-rating {
     display: flex;
 }
 
-.show-card {
-    display: block;
-    padding: 0px 16px;
+.show-title{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 16px;
+    color: #371687;
 }
+

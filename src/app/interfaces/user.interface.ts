@@ -1,4 +1,5 @@
+import { IUserData } from './user-data.interface';
+
 export interface IUser {
-	id: string;
-	email: string;
+	user: IUserData;
 }

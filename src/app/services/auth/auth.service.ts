@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ILoginData } from '../interfaces/login-data.interface';
-import { IRegisterData } from '../interfaces/register-data.interface';
-import { IUser } from '../interfaces/user.interface';
+import { ILoginData } from '../../interfaces/login-data.interface';
+import { IRegisterData } from '../../interfaces/register-data.interface';
+import { IUser } from '../../interfaces/user.interface';
 
 @Injectable({
 	providedIn: 'root',

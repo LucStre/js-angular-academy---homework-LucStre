@@ -4,7 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { catchError, EMPTY } from 'rxjs';
 import { ILoginData } from 'src/app/interfaces/login-data.interface';
-import { AuthService } from 'src/app/services/auth.service';
+import { IUser } from 'src/app/interfaces/user.interface';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
 	selector: 'app-login',
@@ -39,8 +40,9 @@ export class LoginComponent {
 				}),
 			)
 			.subscribe((resp) => {
-				console.log(resp);
 				if (resp) {
+					console.log(resp.user);
+					sessionStorage.setItem('loggedUser', resp.user.email);
 					this.router.navigate(['']);
 				}
 			});
