@@ -1,2 +1,2 @@
-<div class="email">EMAIL: <br />{{ userEmail }}</div>
+<div class="email" *ngIf="user$ | async as user">EMAIL: <br />{{ user.user.email }}</div>
 <div class="image"></div>
