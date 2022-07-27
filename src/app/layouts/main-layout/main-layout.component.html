@@ -19,7 +19,7 @@
 				mat-button
 				class="logout"
 				color="primary"
-				routerLink=""
+				(click)="onLogoutClick($event)"
 				[routerLinkActive]="'active'"
 				[routerLinkActiveOptions]="{ exact: true }"
 			>

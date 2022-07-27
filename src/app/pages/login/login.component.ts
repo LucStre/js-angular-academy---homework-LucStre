@@ -39,12 +39,8 @@ export class LoginComponent {
 					return EMPTY;
 				}),
 			)
-			.subscribe((resp) => {
-				if (resp) {
-					console.log(resp.user);
-					sessionStorage.setItem('loggedUser', JSON.stringify(resp.user));
-					this.router.navigate(['']);
-				}
+			.subscribe(() => {
+				this.router.navigate(['']);
 			});
 	}
 }
