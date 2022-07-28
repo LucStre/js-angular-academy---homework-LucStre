@@ -30,10 +30,21 @@
     min-width: 0px;
 }
 
-mat-form-field{
-    border-radius: 10px;
-    background-color: white;
-    color:#1b004c;
+textarea{
     width: 100%;
+    border-radius: 24px;
     height: 80px;
+    color:#8D5CE6;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 12px;
+}
+
+textarea::placeholder {
+    color: #8D5CE6;
+}
+
+.rating-container{
+    min-width: 200px;
 }
