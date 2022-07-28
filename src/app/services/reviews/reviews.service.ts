@@ -23,4 +23,8 @@ export class ReviewsService {
 			.get<IReviews>(`https://tv-shows.infinum.academy/shows/${showid}/reviews`, this.authService.getOptions())
 			.pipe(map((reviews) => reviews.reviews));
 	}
+
+	public delete(id: string): Observable<void> {
+		return this.http.delete<void>(`https://tv-shows.infinum.academy/reviews/${id}`, this.authService.getOptions());
+	}
 }

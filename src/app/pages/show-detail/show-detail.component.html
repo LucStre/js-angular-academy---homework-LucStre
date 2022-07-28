@@ -21,7 +21,7 @@
 		<p>Reviews</p>
 		<div class="review">
 			<app-review-form></app-review-form>
-			<app-review-card *ngIf="reviews$ | async as reviews" [reviews]="reviews"></app-review-card>
+			<app-review-card [reviews$]="reviews$"></app-review-card>
 		</div>
 	</div>
 </div>
