@@ -37,13 +37,16 @@ export class ReviewFormComponent {
 
 	public onPostClick(event: Event): void {
 		event.preventDefault();
-		this.reviewsService.create({
-			rating: this.form.controls.rating.value,
-			comment: this.form.controls.comment.value,
-			show_id: this.route.snapshot.params['id'],
-		} as IReview);
-		this.form.controls.comment.setValue('');
-		this.form.controls.rating.setValue(0);
-		this.displayValue = 0;
+		this.reviewsService
+			.create({
+				rating: this.form.controls.rating.value,
+				comment: this.form.controls.comment.value,
+				show_id: this.route.snapshot.params['id'],
+			} as IReview)
+			.subscribe(() => {
+				this.form.controls.comment.setValue('');
+				this.form.controls.rating.setValue(0);
+				this.displayValue = 0;
+			});
 	}
 }
