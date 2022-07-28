@@ -13,21 +13,25 @@ export class ReviewCardComponent implements OnDestroy {
 	@Input() reviews: Array<IReview> = [];
 	@Output() deleteReview = new EventEmitter();
 	public currentEmail: string | null = null;
-	private subscription?: Subscription;
+	private subscription: Subscription = new Subscription();
 
 	constructor(private readonly authService: AuthService, private readonly reviewsService: ReviewsService) {
-		this.subscription = this.authService.token$.subscribe((token) => {
-			if (token) {
-				this.currentEmail = token?.uid;
-			}
-		});
+		this.subscription.add(
+			this.authService.token$.subscribe((token) => {
+				if (token) {
+					this.currentEmail = token?.uid;
+				}
+			}),
+		);
 	}
 
 	public onDeleteClick(idReview: string | undefined): void {
 		if (idReview) {
-			this.reviewsService.delete(idReview).subscribe(() => {
-				this.deleteReview.emit();
-			});
+			this.subscription.add(
+				this.reviewsService.delete(idReview).subscribe(() => {
+					this.deleteReview.emit();
+				}),
+			);
 		}
 	}
 
