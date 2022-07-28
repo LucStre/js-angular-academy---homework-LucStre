@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IReview } from 'src/app/interfaces/review.interface';
@@ -10,6 +10,7 @@ import { ReviewsService } from 'src/app/services/reviews/reviews.service';
 	styleUrls: ['./review-form.component.scss'],
 })
 export class ReviewFormComponent {
+	@Output() createReview = new EventEmitter();
 	public form = new FormGroup({
 		comment: new FormControl('', Validators.required),
 		rating: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(5)]),
@@ -44,6 +45,7 @@ export class ReviewFormComponent {
 				show_id: this.route.snapshot.params['id'],
 			} as IReview)
 			.subscribe(() => {
+				this.createReview.emit();
 				this.form.controls.comment.setValue('');
 				this.form.controls.rating.setValue(0);
 				this.displayValue = 0;

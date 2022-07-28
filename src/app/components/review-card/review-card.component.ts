@@ -1,6 +1,5 @@
-import { Component, Input, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { EMPTY, Observable, Subscription, switchMap } from 'rxjs';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IReview } from 'src/app/interfaces/review.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ReviewsService } from 'src/app/services/reviews/reviews.service';
@@ -11,15 +10,12 @@ import { ReviewsService } from 'src/app/services/reviews/reviews.service';
 	styleUrls: ['./review-card.component.scss'],
 })
 export class ReviewCardComponent implements OnDestroy {
-	@Input() public reviews$: Observable<Array<IReview>> = EMPTY;
+	@Input() reviews: Array<IReview> = [];
+	@Output() deleteReview = new EventEmitter();
 	public currentEmail: string | null = null;
 	private subscription?: Subscription;
 
-	constructor(
-		private readonly authService: AuthService,
-		private readonly reviewsService: ReviewsService,
-		private readonly route: ActivatedRoute,
-	) {
+	constructor(private readonly authService: AuthService, private readonly reviewsService: ReviewsService) {
 		this.subscription = this.authService.token$.subscribe((token) => {
 			if (token) {
 				this.currentEmail = token?.uid;
@@ -29,11 +25,9 @@ export class ReviewCardComponent implements OnDestroy {
 
 	public onDeleteClick(idReview: string | undefined): void {
 		if (idReview) {
-			this.reviews$ = this.reviewsService.delete(idReview).pipe(
-				switchMap(() => {
-					return this.reviewsService.allShow(this.route.snapshot.params['id']);
-				}),
-			);
+			this.reviewsService.delete(idReview).subscribe(() => {
+				this.deleteReview.emit();
+			});
 		}
 	}
 
