@@ -1,5 +1,3 @@
-import { IReview } from 'src/app/interfaces/review-interface';
-
 export interface IShow {
 	title: string;
 	description: string;

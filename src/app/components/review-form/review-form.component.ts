@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { IReview } from 'src/app/interfaces/review-interface';
+import { IReview } from 'src/app/interfaces/review.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ReviewsService } from 'src/app/services/reviews/reviews.service';
 

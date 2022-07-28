@@ -1,7 +1,6 @@
-import { NgIfContext } from '@angular/common';
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, EMPTY, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY, Observable, tap } from 'rxjs';
 import { ITokenData } from 'src/app/interfaces/token-data.interface';
 import { ILoginData } from '../../interfaces/login-data.interface';
 import { IRegisterData } from '../../interfaces/register-data.interface';
@@ -29,17 +28,19 @@ export class AuthService {
 		});
 	}
 
+	public getOptions() {
+		return this.token?.client && this.token?.access_token && this.token?.uid
+			? {
+					headers: new HttpHeaders()
+						.set('client', this.token?.client)
+						.set('access-token', this.token?.access_token)
+						.set('uid', this.token?.uid),
+			  }
+			: {};
+	}
+
 	public init(): Observable<IUser> {
-		const options =
-			this.token?.client && this.token?.access_token && this.token?.uid
-				? {
-						headers: new HttpHeaders()
-							.set('client', this.token?.client)
-							.set('access-token', this.token?.access_token)
-							.set('uid', this.token?.uid),
-				  }
-				: {};
-		return this.http.get<IUser>('https://tv-shows.infinum.academy/users/me', options).pipe(
+		return this.http.get<IUser>('https://tv-shows.infinum.academy/users/me', this.getOptions()).pipe(
 			catchError(() => {
 				return EMPTY;
 			}),

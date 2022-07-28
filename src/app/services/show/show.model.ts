@@ -1,4 +1,3 @@
-import { IReview } from 'src/app/interfaces/review-interface';
 import { IShow } from './show.interface';
 
 export class Show {

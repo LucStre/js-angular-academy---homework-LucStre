@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IReview } from 'src/app/interfaces/review-interface';
+import { IReview } from 'src/app/interfaces/review.interface';
 
 @Component({
 	selector: 'app-review-card',
