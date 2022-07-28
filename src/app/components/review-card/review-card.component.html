@@ -3,7 +3,17 @@
 </ul>
 <mat-card class="review-card" id="review-card" *ngFor="let review of reviews">
 	<div class="user-data">
-		<div mat-card-avatar class="image" [style.background-image]="'url(' + review.user.image_url + ')'"></div>
+		<div
+			mat-card-avatar
+			class="image"
+			[style.background-image]="
+				'url(' +
+				(review.user.image_url !== null
+					? review.user.image_url
+					: 'https://eurobus.hr/wp/wp-content/uploads/2018/04/no-image.png') +
+				')'
+			"
+		></div>
 		<div class="rating-user">
 			<div>{{ review.user.email }}</div>
 			<app-review-rating class="review-rating" [rating]="review.rating"></app-review-rating>
