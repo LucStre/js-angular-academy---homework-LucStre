@@ -21,8 +21,12 @@ export class AuthService {
 		const loggedUser = localStorage.getItem('token');
 		if (loggedUser) {
 			this._token$.next(JSON.parse(loggedUser));
-			this.token = JSON.parse(loggedUser);
 		}
+		this._token$.subscribe((token) => {
+			if (token) {
+				this.token = token;
+			}
+		});
 	}
 
 	public init(): Observable<IUser> {
@@ -54,7 +58,6 @@ export class AuthService {
 					uid: resp.headers.get('uid'),
 				};
 				this._token$.next(registerData);
-				this.token = registerData;
 				localStorage.setItem('token', JSON.stringify(registerData));
 			}),
 		);
@@ -71,7 +74,6 @@ export class AuthService {
 						uid: resp.headers.get('uid'),
 					};
 					this._token$.next(loginData);
-					this.token = loginData;
 					localStorage.setItem('token', JSON.stringify(loginData));
 				}),
 			);
