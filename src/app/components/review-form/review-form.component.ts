@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IReview } from 'src/app/interfaces/review.interface';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { ReviewsService } from 'src/app/services/reviews/reviews.service';
 
 @Component({
@@ -15,15 +14,9 @@ export class ReviewFormComponent {
 		comment: new FormControl('', Validators.required),
 		rating: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(5)]),
 	});
-	public readonly user$ = this.authService.user$;
-
 	private displayValue: number = 0;
 
-	constructor(
-		private readonly reviewsService: ReviewsService,
-		private readonly route: ActivatedRoute,
-		private readonly authService: AuthService,
-	) {}
+	constructor(private readonly reviewsService: ReviewsService, private readonly route: ActivatedRoute) {}
 
 	public onStarClick(starNumber: number): void {
 		this.displayValue = starNumber;
@@ -44,16 +37,16 @@ export class ReviewFormComponent {
 
 	public onPostClick(event: Event): void {
 		event.preventDefault();
-		this.reviewsService.post({
-			id: 'id',
-			rating: this.form.controls.rating.value,
-			comment: this.form.controls.comment.value,
-			show_id: this.route.snapshot.params['id'],
-			user: {
-				id: '',
-				email: '',
-				image_url: '',
-			},
-		} as IReview);
+		this.reviewsService
+			.create({
+				rating: this.form.controls.rating.value,
+				comment: this.form.controls.comment.value,
+				show_id: this.route.snapshot.params['id'],
+			} as IReview)
+			.subscribe(() => {
+				this.form.controls.comment.setValue('');
+				this.form.controls.rating.setValue(0);
+				this.displayValue = 0;
+			});
 	}
 }

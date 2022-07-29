@@ -13,7 +13,7 @@ export class AuthService {
 	private _user$ = new BehaviorSubject<IUser | null>(null);
 	public user$ = this._user$.asObservable();
 	private _token$ = new BehaviorSubject<ITokenData | null>(null);
-	public token$ = this._user$.asObservable();
+	public token$ = this._token$.asObservable();
 	private token: ITokenData | null = null;
 
 	constructor(private readonly http: HttpClient) {
