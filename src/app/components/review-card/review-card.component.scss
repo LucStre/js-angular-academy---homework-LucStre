@@ -2,15 +2,37 @@
     display: flex;
 }
 
-.example-header-image {
-    background-size: cover;
-}
-
 .review-card{
     border-radius: 24px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 200px [col-start]);
     margin: 20px;
     padding: 20px;
-    gap: 20px;
+}
+
+button{
+    border-radius: 12px;
+}
+
+.user-data{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: row1-start;
+    max-width: 400px;
+}
+
+.comment{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    grid-column-start: 4;
+    grid-row-start: row1-start;
+    max-width: 400px;
+}
+
+.image{
+    background-size: cover;
 }

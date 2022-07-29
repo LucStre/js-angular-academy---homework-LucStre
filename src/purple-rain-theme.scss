@@ -217,20 +217,15 @@ $warn: mat-palette($warn-color-palette, 400);
   }
 }
 
-#show-card{
-  margin: 10px;
-  background-color: #F0F8FF;
-  color: $purple;
-  min-width: 240px;
-  max-width: 570px;
-  min-height: 375px;
-  padding: 16px;
-}
-
 @media screen and (max-width: 960px){
   #drawer {
     width: 90%;
     border-top-left-radius: 24px;
     margin: 20px 0px 0px 20px;
+  }
+  #review-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }

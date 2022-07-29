@@ -1,11 +1,33 @@
 <ul *ngIf="reviews.length === 0">
 	This show has no reviews
 </ul>
-<mat-card class="review-card" *ngFor="let review of reviews">
-	<div mat-card-avatar style="background-image:url({{ review.user.image_url }});"></div>
-	<div class="rating-user">
-		<div>{{ review.user.email }}</div>
-		<app-review-rating class="review-rating" [rating]="review.rating"></app-review-rating>
+<mat-card class="review-card" id="review-card" *ngFor="let review of reviews">
+	<div class="user-data">
+		<div
+			mat-card-avatar
+			class="image"
+			[style.background-image]="
+				'url(' +
+				(review.user.image_url !== null
+					? review.user.image_url
+					: 'https://eurobus.hr/wp/wp-content/uploads/2018/04/no-image.png') +
+				')'
+			"
+		></div>
+		<div class="rating-user">
+			<div>{{ review.user.email }}</div>
+			<app-review-rating class="review-rating" [rating]="review.rating"></app-review-rating>
+		</div>
 	</div>
-	<mat-card-content>{{ review.comment }}</mat-card-content>
+	<div class="comment">
+		<mat-card-content>{{ review.comment }}</mat-card-content>
+		<button
+			*ngIf="review.user.email === currentEmail"
+			mat-raised-button
+			color="warn"
+			(click)="onDeleteClick(review.id)"
+		>
+			Delete
+		</button>
+	</div>
 </mat-card>

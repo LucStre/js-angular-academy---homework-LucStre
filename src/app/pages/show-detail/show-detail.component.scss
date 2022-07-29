@@ -1,5 +1,7 @@
 p {
     padding: 20px;
+    max-width: 600px;
+    font-size: 20px;
 }
 
 .show-rating {
@@ -21,8 +23,13 @@ mat-card-title{
     font-size: 24px;
 }
 
-#show-card{
+#show-card {
     margin: 30px;
+    background-color: #F0F8FF;
+    color: #371687;
+    min-width: 240px;
+    min-height: 375px;
+    padding: 16px;
 }
 
 .reviews{
@@ -36,5 +43,6 @@ mat-card-title{
 }
 
 .image {
-    height: 609px;
+    max-height: 609px;
+    object-fit: cover;
 }
