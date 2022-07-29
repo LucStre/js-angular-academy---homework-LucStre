@@ -218,11 +218,12 @@ $warn: mat-palette($warn-color-palette, 400);
 }
 
 #show-card{
-  height: min-content;
   margin: 10px;
   background-color: #F0F8FF;
   color: $purple;
   min-width: 240px;
+  max-width: 570px;
+  min-height: 375px;
   padding: 16px;
 }
 

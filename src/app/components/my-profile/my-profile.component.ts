@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
 	selector: 'app-my-profile',
@@ -6,13 +7,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./my-profile.component.scss'],
 })
 export class MyProfileComponent {
-	public userEmail: string | null = '';
+	public readonly user$ = this.authService.user$;
 
-	constructor() {
-		const loggedUser = sessionStorage.getItem('loggedUser');
-		if (loggedUser) {
-			const user = JSON.parse(loggedUser);
-			this.userEmail = user.email;
-		}
-	}
+	constructor(private readonly authService: AuthService) {}
 }

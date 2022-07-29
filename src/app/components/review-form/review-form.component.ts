@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { IReview } from 'src/app/interfaces/review-interface';
-import { IUserData } from 'src/app/interfaces/user-data.interface';
-import { ReviewService } from 'src/app/services/review/review.service';
+import { IReview } from 'src/app/interfaces/review.interface';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { ReviewsService } from 'src/app/services/reviews/reviews.service';
 
 @Component({
 	selector: 'app-review-form',
@@ -15,20 +15,15 @@ export class ReviewFormComponent {
 		comment: new FormControl('', Validators.required),
 		rating: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(5)]),
 	});
-	public user: IUserData = {
-		id: '',
-		email: '',
-		image_url: '',
-	};
+	public readonly user$ = this.authService.user$;
 
 	private displayValue: number = 0;
 
-	constructor(private readonly reviewService: ReviewService, private readonly route: ActivatedRoute) {
-		const loggedUser = sessionStorage.getItem('loggedUser');
-		if (loggedUser) {
-			this.user = JSON.parse(loggedUser);
-		}
-	}
+	constructor(
+		private readonly reviewsService: ReviewsService,
+		private readonly route: ActivatedRoute,
+		private readonly authService: AuthService,
+	) {}
 
 	public onStarClick(starNumber: number): void {
 		this.displayValue = starNumber;
@@ -49,15 +44,15 @@ export class ReviewFormComponent {
 
 	public onPostClick(event: Event): void {
 		event.preventDefault();
-		this.reviewService.post({
+		this.reviewsService.post({
 			id: 'id',
 			rating: this.form.controls.rating.value,
 			comment: this.form.controls.comment.value,
 			show_id: this.route.snapshot.params['id'],
 			user: {
-				id: this.user.id,
-				email: this.user.email,
-				image_url: this.user.image_url,
+				id: '',
+				email: '',
+				image_url: '',
 			},
 		} as IReview);
 	}

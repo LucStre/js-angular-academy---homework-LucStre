@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Show } from 'src/app/services/show/show.model';
 
 @Component({
 	selector: 'app-show-card',

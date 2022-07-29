@@ -1,4 +1,3 @@
-import { IReview } from 'src/app/interfaces/review-interface';
 import { IShow } from './show.interface';
 
 export class Show {
@@ -7,7 +6,6 @@ export class Show {
 	public averageRating: number | null;
 	public imageUrl: string | null;
 	public id: string;
-	public reviews: IReview[];
 
 	constructor(show: IShow) {
 		this.title = show.title;
@@ -15,6 +13,5 @@ export class Show {
 		this.averageRating = show.average_rating;
 		this.imageUrl = show.image_url;
 		this.id = show.id;
-		this.reviews = show.reviews;
 	}
 }

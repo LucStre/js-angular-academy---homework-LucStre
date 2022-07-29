@@ -31,9 +31,7 @@ export class RegisterComponent {
 				password: this.form.controls.password.value,
 				password_confirmation: this.form.controls.password_confirmation.value,
 			} as IRegisterData)
-			.subscribe((resp) => {
-				console.log(resp.user);
-				sessionStorage.setItem('loggedUser', JSON.stringify(resp.user));
+			.subscribe(() => {
 				this.router.navigate(['']);
 			});
 	}

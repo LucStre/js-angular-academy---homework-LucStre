@@ -25,7 +25,8 @@
 
 .drawer{
     width: 15%;
-    margin-left: 10px;
+    margin: 10px;
+    min-width: 250px;
 }
 
 .active {
@@ -39,5 +40,4 @@ button:hover {
 
 .button{
     text-align: right;
-
 }
