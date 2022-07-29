@@ -1,2 +1,5 @@
-<div class="email" *ngIf="user$ | async as user">EMAIL: <br />{{ user.user.email }}</div>
-<div class="image"></div>
+<ng-container *ngIf="user$ | async as user">
+	<div class="email">EMAIL: <br />{{ user.user.email }}</div>
+	<app-file-input (fileChange)="onFileChange($event)" [imageUrl]="user.user.image_url"></app-file-input>
+	<button mat-raised-button *ngIf="file" (click)="onUploadButtonClick()">Upload</button>
+</ng-container>

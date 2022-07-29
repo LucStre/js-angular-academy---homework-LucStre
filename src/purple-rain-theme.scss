@@ -228,4 +228,9 @@ $warn: mat-palette($warn-color-palette, 400);
     flex-wrap: wrap;
     gap: 20px;
   }
+
+  #label{
+    width: 270px;
+    height: 270px;
+  }
 }

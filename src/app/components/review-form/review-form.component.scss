@@ -21,8 +21,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     margin: 10px;
+}
+
+button{
+    min-width: 110px;
 }
 
 #starButton{
