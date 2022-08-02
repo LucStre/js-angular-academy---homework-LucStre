@@ -1,0 +1,10 @@
+<label
+	id="label"
+	for="file-input"
+	[style.background-image]="'url(' + imageUrl + ')'"
+	(drop)="onFileDrop($event)"
+	(dragover)="onDragOver($event)"
+	>{{ imageUrl === null ? 'Drop your image here' : null }}</label
+>
+
+<input id="file-input" type="file" (change)="onFileInputChange($event)" />

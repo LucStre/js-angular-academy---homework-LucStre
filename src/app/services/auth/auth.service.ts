@@ -80,6 +80,12 @@ export class AuthService {
 			);
 	}
 
+	public upload(file: File): Observable<any> {
+		const form = new FormData();
+		form.append('image', file);
+		return this.http.put('https://tv-shows.infinum.academy/users', form, this.getOptions());
+	}
+
 	public logout(): void {
 		localStorage.clear();
 		this._user$.next(null);
